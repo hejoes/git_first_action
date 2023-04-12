@@ -1,0 +1,10 @@
+name: First workflow
+on: workflow_dispatch #makes sure we can manually trigger workflow if we want to
+
+jobs: 
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Github context
+        run: echo "${{toJson(github)}}"
+        #we need to wrap this toJson to see the actual output
