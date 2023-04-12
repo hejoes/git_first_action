@@ -1,0 +1,19 @@
+name: Test
+on: push
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code from repository
+      # we need to get our repo code to server
+        uses: actions/checkout@v3
+      - name:  Install nodejs (actually not needed)
+        # On ubuntu, nodejs is installed there already (check runners to see all dependencies that have been installed)
+        uses: actions/setup-nodejs@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+
